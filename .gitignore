@@ -30,6 +30,7 @@ env/
 *.sqlite3
 data/*.db
 data/*.sqlite
+!data/demo/opportunity_engine_seed.db
 
 # Generated exports (keep directory)
 data/exports/*
