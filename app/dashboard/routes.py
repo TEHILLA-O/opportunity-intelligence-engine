@@ -13,6 +13,7 @@ from app.core.enums import DeadlineStatus, ScoreRating, SourceHealthStatus
 from app.repositories.opportunity import OpportunityRepository
 from app.repositories.run import RunRepository
 from app.repositories.source import SourceRepository
+from app.services.normalisation.dates import ensure_utc, utcnow
 
 router = APIRouter(tags=["dashboard"])
 
@@ -73,3 +74,55 @@ async def dashboard_runs(
 ) -> HTMLResponse:
     runs = await RunRepository(session).list_recent(limit=30)
     return request.app.state.templates.TemplateResponse(request, "runs.html", {"runs": runs})
+
+
+@router.get("/metrics", response_class=HTMLResponse, summary="Pipeline metrics dashboard")
+async def dashboard_metrics(
+    request: Request, session: AsyncSession = Depends(db_session)
+) -> HTMLResponse:
+    opportunities = OpportunityRepository(session)
+    sources = SourceRepository(session)
+    runs = RunRepository(session)
+    all_sources = await sources.list_all()
+    latest = await runs.latest()
+    now = utcnow()
+    newest = await opportunities.newest(limit=500)
+    new_today = len(
+        [
+            item
+            for item in newest
+            if item.first_seen_at is not None
+            and (now - (ensure_utc(item.first_seen_at) or now)).days < 1
+        ]
+    )
+    metrics = {
+        "total_opportunities": await opportunities.count(),
+        "new_opportunities": new_today,
+        "high_priority": await opportunities.count_rating(ScoreRating.HIGH)
+        + await opportunities.count_rating(ScoreRating.VERY_HIGH),
+        "closing_soon": await opportunities.count_deadline(DeadlineStatus.CRITICAL)
+        + await opportunities.count_deadline(DeadlineStatus.URGENT),
+        "expired": await opportunities.count_deadline(DeadlineStatus.EXPIRED),
+        "sources_healthy": len(
+            [s for s in all_sources if s.health_status == SourceHealthStatus.HEALTHY]
+        ),
+        "sources_degraded": len(
+            [s for s in all_sources if s.health_status == SourceHealthStatus.DEGRADED]
+        ),
+        "sources_unhealthy": len(
+            [s for s in all_sources if s.health_status == SourceHealthStatus.UNHEALTHY]
+        ),
+        "last_run_id": latest.id if latest else None,
+        "last_run_status": latest.status if latest else None,
+        "last_run_duration_ms": latest.duration_ms if latest else None,
+    }
+    raw_metrics = latest.metrics if latest else {}
+    skip_keys = {"new_ids", "updated_ids"}
+    run_metrics = sorted(
+        (k, v) for k, v in raw_metrics.items() if k not in skip_keys
+    )
+    return request.app.state.templates.TemplateResponse(
+        request,
+        "metrics.html",
+        {"metrics": metrics, "run_metrics": run_metrics},
+    )

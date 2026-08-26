@@ -1,111 +1,174 @@
 {% extends "base.html" %}
 {% block title %}Dashboard · Opportunity Engine{% endblock %}
+{% block page_label %}Dashboard{% endblock %}
+
+{% block topbar_actions %}
+  {% if latest %}
+  <span class="badge badge--{% if latest.status == 'success' %}success{% elif latest.status == 'failed' %}danger{% else %}warning{% endif %}">
+    {{ latest.status.replace('_', ' ') }}
+  </span>
+  {% else %}
+  <span class="badge badge--neutral">No runs</span>
+  {% endif %}
+{% endblock %}
+
 {% block content %}
-<section class="hero">
-  <div>
-    <p class="eyebrow">Operations monitor</p>
-    <h1>Opportunity Intelligence</h1>
-    <p class="lede">Last run <strong>{{ stats.last_status }}</strong> in {{ stats.duration }}.</p>
-  </div>
-</section>
-
-<section class="kpis">
-  <article><span>Total</span><strong>{{ stats.total }}</strong></article>
-  <article><span>New (recent)</span><strong>{{ stats.new }}</strong></article>
-  <article><span>High priority</span><strong>{{ stats.high }}</strong></article>
-  <article><span>Closing soon</span><strong>{{ stats.closing }}</strong></article>
-  <article><span>Expired</span><strong>{{ stats.expired }}</strong></article>
-  <article><span>Sources healthy</span><strong>{{ stats.healthy }}</strong></article>
-</section>
-
-<section class="grid">
-  <div class="panel">
-    <h2>Top opportunities</h2>
-    <table>
-      <thead><tr><th>Title</th><th>Organisation</th><th>Score</th><th>Deadline</th></tr></thead>
-      <tbody>
-      {% for item in top %}
-        <tr>
-          <td><a href="/opportunities/{{ item.id }}">{{ item.title }}</a></td>
-          <td>{{ item.organisation or "—" }}</td>
-          <td><span class="pill score-{{ item.score_rating }}">{{ item.score }}</span></td>
-          <td>{{ item.deadline_at.strftime("%Y-%m-%d") if item.deadline_at else "—" }}</td>
-        </tr>
-      {% else %}
-        <tr><td colspan="4">No opportunities yet. Run <code>opportunity-engine demo</code>.</td></tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <div class="panel">
-    <h2>Recent discoveries</h2>
-    <ul class="plain">
-      {% for item in newest %}
-        <li><a href="/opportunities/{{ item.id }}">{{ item.title }}</a><small>{{ item.organisation }}</small></li>
-      {% else %}
-        <li>None yet.</li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="grid">
-  <div class="panel">
-    <h2>Upcoming deadlines</h2>
-    <table>
-      <thead><tr><th>Title</th><th>Status</th><th>Days</th></tr></thead>
-      <tbody>
-      {% for item in closing %}
-        <tr>
-          <td><a href="/opportunities/{{ item.id }}">{{ item.title }}</a></td>
-          <td>{{ item.deadline_status }}</td>
-          <td>{{ item.days_remaining if item.days_remaining is not none else "—" }}</td>
-        </tr>
-      {% else %}
-        <tr><td colspan="3">No upcoming deadlines.</td></tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <div class="panel">
-    <h2>Source health</h2>
-    <table>
-      <thead><tr><th>Source</th><th>Health</th><th>Accepted</th><th>Rejected</th></tr></thead>
-      <tbody>
-      {% for source in sources %}
-        <tr>
-          <td>{{ source.name }}</td>
-          <td><span class="pill health-{{ source.health_status }}">{{ source.health_status }}</span></td>
-          <td>{{ source.records_accepted }}</td>
-          <td>{{ source.records_rejected }}</td>
-        </tr>
-      {% else %}
-        <tr><td colspan="4">Sources appear after the first pipeline run.</td></tr>
-      {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="panel">
-  <h2>Recent automation runs</h2>
-  <table>
-    <thead><tr><th>Run</th><th>Status</th><th>Duration</th><th>New</th><th>Duplicates</th></tr></thead>
-    <tbody>
-    {% for run in runs %}
-      <tr>
-        <td><code>{{ run.id }}</code></td>
-        <td>{{ run.status }}</td>
-        <td>{{ "%.2f"|format((run.duration_ms or 0) / 1000) }}s</td>
-        <td>{{ run.metrics.get("new_records", "—") }}</td>
-        <td>{{ run.metrics.get("duplicates", "—") }}</td>
-      </tr>
+<header class="page-intro">
+  <h1>Overview</h1>
+  <p>
+    {% if latest %}
+    Last run finished in {{ stats.duration }}.
     {% else %}
-      <tr><td colspan="5">No runs recorded.</td></tr>
-    {% endfor %}
-    </tbody>
-  </table>
+    Run the demo pipeline to populate this view.
+    {% endif %}
+    Tracking {{ stats.total }} opportunities from {{ sources|length }} sources.
+  </p>
+</header>
+
+<section class="stats" aria-label="Key metrics">
+  <div class="stat-card">
+    <span class="stat-label">Total</span>
+    <span class="stat-value">{{ stats.total }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">New</span>
+    <span class="stat-value">{{ stats.new }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">High priority</span>
+    <span class="stat-value">{{ stats.high }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Closing soon</span>
+    <span class="stat-value">{{ stats.closing }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Expired</span>
+    <span class="stat-value">{{ stats.expired }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Healthy sources</span>
+    <span class="stat-value">{{ stats.healthy }}</span>
+  </div>
+</section>
+
+<div class="layout-2col">
+  <section class="card">
+    <div class="card-header">
+      <h2>Top opportunities</h2>
+      <a href="/docs#/opportunities">View API</a>
+    </div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Organisation</th><th>Score</th><th>Deadline</th></tr></thead>
+          <tbody>
+          {% for item in top %}
+            <tr>
+              <td><a href="/opportunities/{{ item.id }}">{{ item.title }}</a></td>
+              <td>{{ item.organisation or "—" }}</td>
+              <td><span class="badge score-{{ item.score_rating }}">{{ item.score }}</span></td>
+              <td>{{ item.deadline_at.strftime("%d %b %Y") if item.deadline_at else "—" }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="4"><div class="empty">No data yet. Run <code>uv run opportunity-engine demo</code></div></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-header">
+      <h2>Recent discoveries</h2>
+    </div>
+    <div class="card-body">
+      <ul class="feed">
+        {% for item in newest %}
+          <li>
+            <a href="/opportunities/{{ item.id }}">{{ item.title }}</a>
+            <small>{{ item.organisation or "Unknown organisation" }}</small>
+          </li>
+        {% else %}
+          <li class="empty">No discoveries yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="layout-2col">
+  <section class="card">
+    <div class="card-header"><h2>Upcoming deadlines</h2></div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Title</th><th>Status</th><th>Days</th></tr></thead>
+          <tbody>
+          {% for item in closing %}
+            <tr>
+              <td><a href="/opportunities/{{ item.id }}">{{ item.title }}</a></td>
+              <td><span class="badge deadline-{{ item.deadline_status }}">{{ item.deadline_status }}</span></td>
+              <td>{{ item.days_remaining if item.days_remaining is not none else "—" }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="3"><div class="empty">No upcoming deadlines.</div></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-header"><h2>Source health</h2></div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Source</th><th>Status</th><th>In</th><th>Out</th></tr></thead>
+          <tbody>
+          {% for source in sources %}
+            <tr>
+              <td>{{ source.name }}</td>
+              <td><span class="badge health-{{ source.health_status }}">{{ source.health_status }}</span></td>
+              <td>{{ source.records_accepted }}</td>
+              <td>{{ source.records_rejected }}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="4"><div class="empty">Run the pipeline to register sources.</div></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="card layout-full">
+  <div class="card-header">
+    <h2>Recent runs</h2>
+    <a href="/runs">View all</a>
+  </div>
+  <div class="card-body">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Run</th><th>Status</th><th>Duration</th><th>New</th><th>Duplicates</th></tr></thead>
+        <tbody>
+        {% for run in runs %}
+          <tr>
+            <td><code>{{ run.id }}</code></td>
+            <td><span class="badge status-{{ run.status }}">{{ run.status.replace('_', ' ') }}</span></td>
+            <td>{{ "%.2f"|format((run.duration_ms or 0) / 1000) }}s</td>
+            <td>{{ run.metrics.get("new_records", "—") }}</td>
+            <td>{{ run.metrics.get("duplicates", "—") }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5"><div class="empty">No runs recorded.</div></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 {% endblock %}

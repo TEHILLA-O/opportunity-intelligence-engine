@@ -10,4 +10,4 @@ from httpx import AsyncClient
 async def test_dashboard_renders(client: AsyncClient) -> None:
     response = await client.get("/")
     assert response.status_code == 200
-    assert b"Opportunity Intelligence" in response.content
+    assert b"Opportunity Engine" in response.content

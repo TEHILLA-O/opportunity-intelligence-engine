@@ -1,5 +1,8 @@
 """Application settings loaded from environment variables and optional .env file."""
 
+from __future__ import annotations
+
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -9,11 +12,18 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
+def _is_vercel() -> bool:
+    return bool(os.environ.get("VERCEL"))
+
+
+def _vercel_tmp() -> Path:
+    return Path("/tmp/opportunity-engine")
+
+
 class Settings(BaseSettings):
     """Runtime configuration. Optional credentials are never required for local/demo use."""
 
-    model_config = SettingsConfigDict(
-        env_file=str(PROJECT_ROOT / ".env"),
+    model_config = SettingsConfigDict(        env_file=str(PROJECT_ROOT / ".env"),
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,
@@ -84,6 +94,22 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    settings = Settings()
+    overrides: dict[str, object] = {}
+    if _is_vercel():
+        tmp = _vercel_tmp()
+        overrides.update(
+            {
+                "app_env": "production",
+                "database_url": os.environ.get(
+                    "DATABASE_URL",
+                    f"sqlite+aiosqlite:///{(tmp / 'opportunity_engine.db').as_posix()}",
+                ),
+                "data_dir": tmp / "data",
+                "demo_data_dir": tmp / "data" / "demo",
+                "exports_dir": tmp / "data" / "exports",
+                "raw_dir": tmp / "data" / "raw",
+            }
+        )
+    settings = Settings(**overrides)
     settings.ensure_data_dirs()
     return settings

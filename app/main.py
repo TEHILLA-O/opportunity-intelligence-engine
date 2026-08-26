@@ -13,6 +13,7 @@ from fastapi.templating import Jinja2Templates
 from app import __version__
 from app.api.error_handlers import register_error_handlers
 from app.api.routes import exports, health, opportunities, runs, sources
+from app.bootstrap import ensure_serverless_ready
 from app.core.config import get_settings
 from app.core.logging import configure_logging
 from app.dashboard.routes import router as dashboard_router
@@ -34,6 +35,7 @@ async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
     configure_logging(settings.log_level, json_output=settings.app_env == "production")
     settings.ensure_data_dirs()
     get_engine()
+    await ensure_serverless_ready()
     yield
     await dispose_engine()
 

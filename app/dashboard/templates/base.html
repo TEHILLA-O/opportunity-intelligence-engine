@@ -5,43 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
   <title>{% block title %}Opportunity Engine{% endblock %}</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="/">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">
-          <strong>Opportunity Engine</strong>
-          <small>Intelligence automation</small>
-        </span>
-      </a>
+  <div class="app">
+    <aside class="sidebar" aria-label="Sidebar">
+      <div class="workspace">
+        <div class="workspace-avatar" aria-hidden="true">OE</div>
+        <div class="workspace-meta">
+          <span class="workspace-name">Opportunity Engine</span>
+          <span class="workspace-plan">Demo workspace</span>
+        </div>
+      </div>
 
-      <nav class="nav" aria-label="Primary">
-        {% set path = request.url.path %}
-        <a href="/" class="nav-link{% if path == '/' %} is-active{% endif %}">Dashboard</a>
-        <a href="/runs" class="nav-link{% if path == '/runs' %} is-active{% endif %}">Runs</a>
-        <a href="/metrics/summary" class="nav-link">Metrics</a>
-        <a href="/docs" class="nav-link nav-link--external">API docs</a>
+      <nav class="sidebar-nav" aria-label="Primary">
+        <div class="nav-group">
+          <span class="nav-heading">Overview</span>
+          <a href="/" class="nav-item{% if request.url.path == '/' %} is-active{% endif %}">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Dashboard
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-heading">Pipeline</span>
+          <a href="/runs" class="nav-item{% if request.url.path == '/runs' %} is-active{% endif %}">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            Runs
+          </a>
+          <a href="/metrics" class="nav-item{% if request.url.path == '/metrics' %} is-active{% endif %}">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-6 4 3 5-7"/></svg>
+            Metrics
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-heading">Developer</span>
+          <a href="/docs" class="nav-item nav-item--external">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            API docs
+          </a>
+        </div>
       </nav>
-    </div>
-  </header>
 
-  <main id="main" class="container">
-    {% block content %}{% endblock %}
-  </main>
+      <div class="sidebar-foot">
+        <p>Deterministic pipeline</p>
+        <p class="sidebar-foot-sub">No LLM · auditable scoring</p>
+      </div>
+    </aside>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>Deterministic Python automation pipeline · no LLM required</p>
-      <p class="footer-meta">Collect · validate · score · report</p>
+    <div class="main">
+      <header class="page-topbar">
+        <div class="breadcrumb">
+          {% block breadcrumb %}
+          <span class="breadcrumb-root">Demo workspace</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">{% block page_label %}Dashboard{% endblock %}</span>
+          {% endblock %}
+        </div>
+        <div class="topbar-actions">
+          {% block topbar_actions %}{% endblock %}
+        </div>
+      </header>
+
+      <main id="main" class="page-content">
+        {% block content %}{% endblock %}
+      </main>
     </div>
-  </footer>
+  </div>
 </body>
 </html>

@@ -1,43 +1,93 @@
 {% extends "base.html" %}
 {% block title %}{{ item.title }} · Opportunity Engine{% endblock %}
+{% block page_label %}{{ item.title[:48] }}{% if item.title|length > 48 %}…{% endif %}{% endblock %}
+
+{% block breadcrumb %}
+<span class="breadcrumb-root">Demo workspace</span>
+<span class="breadcrumb-sep">/</span>
+<a href="/" class="breadcrumb-root">Dashboard</a>
+<span class="breadcrumb-sep">/</span>
+<span class="breadcrumb-current">{{ item.title[:40] }}{% if item.title|length > 40 %}…{% endif %}</span>
+{% endblock %}
+
 {% block content %}
-<p class="eyebrow"><a href="/">← Dashboard</a></p>
-<h1>{{ item.title }}</h1>
-<p class="lede">{{ item.organisation or "Unknown organisation" }} · {{ item.location or "Location unknown" }}</p>
+<a class="back-link" href="/">← Back</a>
 
-<section class="kpis">
-  <article><span>Score</span><strong>{{ item.score }}</strong></article>
-  <article><span>Rating</span><strong>{{ item.score_rating }}</strong></article>
-  <article><span>Deadline</span><strong>{{ item.deadline_status }}</strong></article>
-  <article><span>Value</span><strong>{{ item.currency or "" }} {{ item.estimated_value or "—" }}</strong></article>
+<header class="page-intro">
+  <span class="procurement-tag">{{ item.procurement_type or "Opportunity" }}</span>
+  <h1>{{ item.title }}</h1>
+  <p>{{ item.organisation or "Unknown organisation" }} · {{ item.location or "Location unknown" }}</p>
+</header>
+
+<section class="detail-stats" aria-label="Opportunity metrics">
+  <div class="stat-card">
+    <span class="stat-label">Score</span>
+    <span class="stat-value">{{ item.score }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Rating</span>
+    <span class="stat-value" style="font-size:16px;padding-top:4px"><span class="badge score-{{ item.score_rating }}">{{ item.score_rating.replace('_', ' ') }}</span></span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Deadline</span>
+    <span class="stat-value" style="font-size:16px;padding-top:4px"><span class="badge deadline-{{ item.deadline_status }}">{{ item.deadline_status }}</span></span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Est. value</span>
+    <span class="stat-value" style="font-size:18px">{{ item.currency or "" }} {{ item.estimated_value or "—" }}</span>
+  </div>
 </section>
 
-<section class="panel">
-  <h2>Summary</h2>
-  <p>{{ item.summary or item.description or "No description." }}</p>
-  {% if item.source_url %}<p><a href="{{ item.source_url }}">Source record</a></p>{% endif %}
-</section>
+<div class="score-bar">
+  <div class="score-bar-track">
+    <div class="score-bar-fill" style="width: {{ [item.score, 100]|min }}%"></div>
+  </div>
+  <div class="score-bar-meta">
+    <span>Suitability</span>
+    <span>{{ item.score }} / 100</span>
+  </div>
+</div>
 
-<section class="panel">
-  <h2>Why this score</h2>
-  <ul>
-    {% for reason in item.score_reasons %}
-      <li>{{ reason }}</li>
-    {% else %}
-      <li>No scoring reasons recorded.</li>
-    {% endfor %}
-  </ul>
-</section>
+<div class="detail-grid">
+  <section class="card">
+    <div class="card-header"><h2>Summary</h2></div>
+    <div class="card-body card-body--padded">
+      <p style="margin:0;font-size:14px;color:rgba(250,250,250,0.8);line-height:1.6">{{ item.summary or item.description or "No description available." }}</p>
+      {% if item.source_url %}
+      <p style="margin:16px 0 0"><a href="{{ item.source_url }}" target="_blank" rel="noopener" style="font-size:13px;color:var(--muted-foreground);text-decoration:underline;text-underline-offset:3px">Source record ↗</a></p>
+      {% endif %}
+    </div>
+  </section>
 
-<section class="panel">
-  <h2>Provenance</h2>
-  <table>
-    <tr><th>External ID</th><td>{{ item.external_id or "—" }}</td></tr>
-    <tr><th>Raw record</th><td>{{ item.raw_opportunity_id or "—" }}</td></tr>
-    <tr><th>Content hash</th><td><code>{{ item.content_hash }}</code></td></tr>
-    <tr><th>First seen</th><td>{{ item.first_seen_at }}</td></tr>
-    <tr><th>Last seen</th><td>{{ item.last_seen_at }}</td></tr>
-    <tr><th>Contact</th><td>{{ item.contact_name or "—" }} {{ item.contact_email or "" }}</td></tr>
-  </table>
+  <section class="card">
+    <div class="card-header"><h2>Scoring breakdown</h2></div>
+    <div class="card-body card-body--padded">
+      <ul class="reason-list">
+        {% for reason in item.score_reasons %}
+          <li>{{ reason }}</li>
+        {% else %}
+          <li>No scoring reasons recorded.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</div>
+
+<section class="card">
+  <div class="card-header"><h2>Provenance</h2></div>
+  <div class="card-body">
+    <div class="table-wrap">
+      <table class="meta-table">
+        <tbody>
+          <tr><th>External ID</th><td>{{ item.external_id or "—" }}</td></tr>
+          <tr><th>Raw record</th><td><code>{{ item.raw_opportunity_id or "—" }}</code></td></tr>
+          <tr><th>Content hash</th><td><code>{{ item.content_hash }}</code></td></tr>
+          <tr><th>First seen</th><td>{{ item.first_seen_at }}</td></tr>
+          <tr><th>Last seen</th><td>{{ item.last_seen_at }}</td></tr>
+          <tr><th>Contact</th><td>{{ item.contact_name or "—" }}{% if item.contact_email %} · {{ item.contact_email }}{% endif %}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 {% endblock %}

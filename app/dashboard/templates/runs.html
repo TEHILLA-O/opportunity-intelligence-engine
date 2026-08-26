@@ -1,25 +1,49 @@
 {% extends "base.html" %}
 {% block title %}Runs · Opportunity Engine{% endblock %}
+{% block page_label %}Runs{% endblock %}
+
 {% block content %}
-<h1>Automation runs</h1>
+<header class="page-intro">
+  <h1>Pipeline runs</h1>
+  <p>Execution history with per-stage timing. Useful for demos and operational review.</p>
+</header>
+
 {% for run in runs %}
-<section class="panel">
-  <h2><code>{{ run.id }}</code> · {{ run.status }}</h2>
-  <p>Trigger {{ run.trigger }} · {{ "%.2f"|format((run.duration_ms or 0) / 1000) }}s</p>
-  <table>
-    <thead><tr><th>Stage</th><th>Status</th><th>Duration</th></tr></thead>
-    <tbody>
-    {% for step in run.steps %}
-      <tr>
-        <td>{{ step.name }}</td>
-        <td>{{ step.status }}</td>
-        <td>{{ step.duration_ms }} ms</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+<section class="card run-block">
+  <div class="card-header">
+    <h2>{{ run.id }}</h2>
+    <span class="badge status-{{ run.status }}">{{ run.status.replace('_', ' ') }}</span>
+  </div>
+  <p class="run-meta">
+    Trigger <strong>{{ run.trigger }}</strong> · Duration <strong>{{ "%.2f"|format((run.duration_ms or 0) / 1000) }}s</strong>
+  </p>
+  <div class="card-body">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>Status</th><th>Duration</th></tr></thead>
+        <tbody>
+        {% for step in run.steps %}
+          <tr>
+            <td>{{ step.name }}</td>
+            <td>
+              <span class="badge {% if step.status == 'success' %}step-ok{% elif step.status == 'failed' %}step-failed{% else %}step-skipped{% endif %}">
+                {{ step.status }}
+              </span>
+            </td>
+            <td>{{ step.duration_ms }} ms</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 {% else %}
-<p>No runs yet.</p>
+<section class="card">
+  <div class="empty">
+    <p>No runs recorded yet.</p>
+    <code>uv run opportunity-engine demo</code>
+  </div>
+</section>
 {% endfor %}
 {% endblock %}

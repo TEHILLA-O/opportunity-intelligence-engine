@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}Metrics · Opportunity Engine{% endblock %}
+{% block page_label %}Metrics{% endblock %}
+
+{% block topbar_actions %}
+  {% if metrics.last_run_status %}
+  <span class="badge badge--{% if metrics.last_run_status == 'success' %}success{% elif metrics.last_run_status == 'failed' %}danger{% else %}warning{% endif %}">
+    {{ metrics.last_run_status.replace('_', ' ') }}
+  </span>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<header class="page-intro">
+  <h1>Pipeline metrics</h1>
+  <p>Aggregated counts from the latest run and current datastore. JSON API available at <a href="/metrics/summary" style="color:var(--muted-foreground);text-decoration:underline;text-underline-offset:3px">/metrics/summary</a>.</p>
+</header>
+
+<section class="stats" aria-label="Summary metrics">
+  <div class="stat-card">
+    <span class="stat-label">Total opportunities</span>
+    <span class="stat-value">{{ metrics.total_opportunities }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">New today</span>
+    <span class="stat-value">{{ metrics.new_opportunities }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">High priority</span>
+    <span class="stat-value">{{ metrics.high_priority }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Closing soon</span>
+    <span class="stat-value">{{ metrics.closing_soon }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Expired</span>
+    <span class="stat-value">{{ metrics.expired }}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">Sources healthy</span>
+    <span class="stat-value">{{ metrics.sources_healthy }}</span>
+  </div>
+</section>
+
+<div class="layout-2col">
+  <section class="card">
+    <div class="card-header"><h2>Last pipeline run</h2></div>
+    <div class="card-body">
+      {% if metrics.last_run_id %}
+      <div class="table-wrap">
+        <table class="meta-table">
+          <tbody>
+            <tr><th>Run ID</th><td><code>{{ metrics.last_run_id }}</code></td></tr>
+            <tr><th>Status</th><td><span class="badge status-{{ metrics.last_run_status }}">{{ metrics.last_run_status.replace('_', ' ') }}</span></td></tr>
+            <tr><th>Duration</th><td>{{ "%.2f"|format((metrics.last_run_duration_ms or 0) / 1000) }}s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="empty">No runs recorded yet.</div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-header"><h2>Source health</h2></div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table class="meta-table">
+          <tbody>
+            <tr><th>Healthy</th><td><span class="badge health-healthy">{{ metrics.sources_healthy }}</span></td></tr>
+            <tr><th>Degraded</th><td><span class="badge health-degraded">{{ metrics.sources_degraded }}</span></td></tr>
+            <tr><th>Unhealthy</th><td><span class="badge health-unhealthy">{{ metrics.sources_unhealthy }}</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% if run_metrics %}
+<section class="card layout-full">
+  <div class="card-header"><h2>Last run breakdown</h2></div>
+  <div class="card-body">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <tbody>
+        {% for key, value in run_metrics %}
+          <tr>
+            <td>{{ key.replace('_', ' ') }}</td>
+            <td>{% if value is string or value is number %}{{ value }}{% else %}<code>{{ value }}</code>{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
