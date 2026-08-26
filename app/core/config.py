@@ -29,7 +29,8 @@ def sqlite_database_url(path: Path) -> str:
 class Settings(BaseSettings):
     """Runtime configuration. Optional credentials are never required for local/demo use."""
 
-    model_config = SettingsConfigDict(        env_file=str(PROJECT_ROOT / ".env"),
+    model_config = SettingsConfigDict(
+        env_file=str(PROJECT_ROOT / ".env"),
         env_file_encoding="utf-8",
         extra="ignore",
         case_sensitive=False,

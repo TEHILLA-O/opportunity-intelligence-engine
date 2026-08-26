@@ -118,9 +118,7 @@ async def dashboard_metrics(
     }
     raw_metrics = latest.metrics if latest else {}
     skip_keys = {"new_ids", "updated_ids"}
-    run_metrics = sorted(
-        (k, v) for k, v in raw_metrics.items() if k not in skip_keys
-    )
+    run_metrics = sorted((k, v) for k, v in raw_metrics.items() if k not in skip_keys)
     return request.app.state.templates.TemplateResponse(
         request,
         "metrics.html",
