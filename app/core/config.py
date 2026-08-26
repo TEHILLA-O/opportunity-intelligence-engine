@@ -106,10 +106,15 @@ def get_settings() -> Settings:
         tmp = _vercel_tmp()
         tmp.mkdir(parents=True, exist_ok=True)
         db_file = tmp / "opportunity_engine.db"
+        env_db = os.environ.get("DATABASE_URL", "")
+        if env_db.startswith("postgresql"):
+            database_url = env_db
+        else:
+            database_url = sqlite_database_url(db_file)
         overrides.update(
             {
                 "app_env": "production",
-                "database_url": os.environ.get("DATABASE_URL", sqlite_database_url(db_file)),
+                "database_url": database_url,
                 "data_dir": tmp / "data",
                 "demo_data_dir": tmp / "data" / "demo",
                 "exports_dir": tmp / "data" / "exports",
