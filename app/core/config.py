@@ -20,6 +20,12 @@ def _vercel_tmp() -> Path:
     return Path("/tmp/opportunity-engine")
 
 
+def sqlite_database_url(path: Path) -> str:
+    """Build a SQLAlchemy SQLite URL for an absolute filesystem path."""
+    resolved = path.resolve()
+    return f"sqlite+aiosqlite:///{resolved.as_posix()}"
+
+
 class Settings(BaseSettings):
     """Runtime configuration. Optional credentials are never required for local/demo use."""
 
@@ -97,13 +103,12 @@ def get_settings() -> Settings:
     overrides: dict[str, object] = {}
     if _is_vercel():
         tmp = _vercel_tmp()
+        tmp.mkdir(parents=True, exist_ok=True)
+        db_file = tmp / "opportunity_engine.db"
         overrides.update(
             {
                 "app_env": "production",
-                "database_url": os.environ.get(
-                    "DATABASE_URL",
-                    f"sqlite+aiosqlite:///{(tmp / 'opportunity_engine.db').as_posix()}",
-                ),
+                "database_url": os.environ.get("DATABASE_URL", sqlite_database_url(db_file)),
                 "data_dir": tmp / "data",
                 "demo_data_dir": tmp / "data" / "demo",
                 "exports_dir": tmp / "data" / "exports",

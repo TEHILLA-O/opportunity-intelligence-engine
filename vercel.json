@@ -1,9 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
+    "index.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,.venv/**,data/exports/**,data/raw/**,**/*.db,**/*.xlsx,uv.lock}"
+    },
     "app/main.py": {
       "maxDuration": 60,
-      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,.venv/**,data/exports/**,data/raw/**,**/*.db,**/*.xlsx}"
+      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,.venv/**,data/exports/**,data/raw/**,**/*.db,**/*.xlsx,uv.lock}"
     }
   }
 }

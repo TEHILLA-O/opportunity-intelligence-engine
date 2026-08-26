@@ -3,16 +3,16 @@ revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.15' and sys_platform == 'win32'",
-    "python_full_version == '3.14.*' and sys_platform == 'win32'",
     "python_full_version >= '3.15' and sys_platform == 'emscripten'",
-    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version >= '3.15' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'win32'",
+    "python_full_version == '3.14.*' and sys_platform == 'emscripten'",
     "python_full_version == '3.14.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
     "python_full_version == '3.13.*' and sys_platform == 'win32'",
-    "python_full_version < '3.13' and sys_platform == 'win32'",
     "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
-    "python_full_version < '3.13' and sys_platform == 'emscripten'",
     "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.13' and sys_platform == 'win32'",
+    "python_full_version < '3.13' and sys_platform == 'emscripten'",
     "python_full_version < '3.13' and sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 
@@ -1654,8 +1654,6 @@ dependencies = [
     { name = "jinja2" },
     { name = "lxml" },
     { name = "openpyxl" },
-    { name = "pandas" },
-    { name = "prefect" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "python-dateutil" },
@@ -1671,6 +1669,12 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
+analytics = [
+    { name = "pandas" },
+]
+orchestration = [
+    { name = "prefect" },
+]
 playwright = [
     { name = "playwright" },
 ]
@@ -1702,9 +1706,9 @@ requires-dist = [
     { name = "jinja2", specifier = ">=3.1.4" },
     { name = "lxml", specifier = ">=5.3.0" },
     { name = "openpyxl", specifier = ">=3.1.5" },
-    { name = "pandas", specifier = ">=2.2.0" },
+    { name = "pandas", marker = "extra == 'analytics'", specifier = ">=2.2.0" },
     { name = "playwright", marker = "extra == 'playwright'", specifier = ">=1.48.0" },
-    { name = "prefect", specifier = ">=3.1.0" },
+    { name = "prefect", marker = "extra == 'orchestration'", specifier = ">=3.1.0" },
     { name = "pydantic", specifier = ">=2.9.0" },
     { name = "pydantic-settings", specifier = ">=2.6.0" },
     { name = "python-dateutil", specifier = ">=2.9.0" },
@@ -1718,7 +1722,7 @@ requires-dist = [
     { name = "typer", specifier = ">=0.12.5" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.32.0" },
 ]
-provides-extras = ["playwright"]
+provides-extras = ["orchestration", "analytics", "playwright"]
 
 [package.metadata.requires-dev]
 dev = [

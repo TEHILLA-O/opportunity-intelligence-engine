@@ -6,16 +6,16 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app import __version__
 from app.api.error_handlers import register_error_handlers
 from app.api.routes import exports, health, opportunities, runs, sources
-from app.bootstrap import ensure_serverless_ready
+from app.bootstrap import ensure_serverless_ready, is_bootstrapped, is_serverless
 from app.core.config import get_settings
-from app.core.logging import configure_logging
+from app.core.logging import configure_logging, get_logger
 from app.dashboard.routes import router as dashboard_router
 from app.db.session import dispose_engine, get_engine
 
@@ -33,11 +33,20 @@ OPENAPI_TAGS = [
 async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
     settings = get_settings()
     configure_logging(settings.log_level, json_output=settings.app_env == "production")
-    settings.ensure_data_dirs()
-    get_engine()
-    await ensure_serverless_ready()
+    logger = get_logger(__name__)
+    try:
+        settings.ensure_data_dirs()
+        if is_serverless():
+            await ensure_serverless_ready()
+        else:
+            get_engine()
+    except Exception:
+        logger.exception("startup_initialisation_failed")
     yield
-    await dispose_engine()
+    try:
+        await dispose_engine()
+    except Exception:
+        logger.exception("engine_dispose_failed")
 
 
 def create_app() -> FastAPI:
@@ -55,6 +64,13 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
     register_error_handlers(application)
+
+    @application.middleware("http")
+    async def _serverless_bootstrap(request: Request, call_next):  # type: ignore[no-untyped-def]
+        if is_serverless() and not is_bootstrapped():
+            await ensure_serverless_ready()
+        return await call_next(request)
+
     application.include_router(health.router)
     application.include_router(opportunities.router, prefix="/api/v1")
     application.include_router(sources.router, prefix="/api/v1")

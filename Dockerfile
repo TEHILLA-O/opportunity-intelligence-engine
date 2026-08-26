@@ -16,7 +16,7 @@ COPY migrations ./migrations
 COPY alembic.ini ./
 COPY data ./data
 
-RUN uv sync --frozen --no-dev --no-install-project || uv sync --no-dev
+RUN uv sync --frozen --no-dev --no-install-project --extra orchestration || uv sync --no-dev --extra orchestration
 RUN uv pip install --system -e .
 
 EXPOSE 8000
