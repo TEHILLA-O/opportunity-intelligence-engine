@@ -1,0 +1,504 @@
+{
+  "items": [
+    {
+      "title": "Python Data Extraction Automation",
+      "organisation": "Northbridge Digital Services",
+      "description": "Northbridge Digital Services is seeking a supplier to deliver python data extraction automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "UK-wide",
+      "value": "\u00a3234,000",
+      "deadline": "29/09/2026",
+      "category": "infrastructure",
+      "contact_name": "Amelia Hart",
+      "contact_email": "procurement@northbridge.example",
+      "requirements": "Experience with Python, SQL, ETL and production automation.",
+      "skills": [
+        "Python",
+        "SQL",
+        "ETL"
+      ],
+      "url": "https://opportunities.example.invalid/northbridge/21",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Contract",
+        "published_at": "2026-07-20",
+        "category": "infrastructure"
+      },
+      "external_id": "DEMO-0021"
+    },
+    {
+      "title": "Supplier Data Normalisation Service",
+      "organisation": "Westborough Housing Partnership",
+      "description": "Westborough Housing Partnership is seeking a supplier to deliver supplier data normalisation service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Newcastle upon Tyne",
+      "value": "\u00a357,000",
+      "deadline": "2026-08-22",
+      "category": "software-development",
+      "contact_name": "Daniel Okoye",
+      "contact_email": "contracts@westborough.example",
+      "requirements": "Experience with Python, FastAPI, PostgreSQL and production automation.",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "url": "https://opportunities.example.invalid/westborough/22",
+      "metadata": {
+        "status": "expired",
+        "contract_type": "Fixed-price contract",
+        "published_at": "2026-08-23",
+        "category": "software-development"
+      },
+      "external_id": "DEMO-0022"
+    },
+    {
+      "title": "Document Processing Workflow Development",
+      "organisation": "Cedar Finance Group",
+      "description": "Cedar Finance Group is seeking a supplier to deliver document processing workflow development across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "London, United Kingdom",
+      "value": "GBP 177000 - 202000",
+      "deadline": "12/09/2026",
+      "category": "data-engineering",
+      "contact_name": "Priya Raman",
+      "contact_email": "tenders@cedar.example",
+      "requirements": "Experience with Playwright, Python, pytest and production automation.",
+      "skills": [
+        "Playwright",
+        "Python",
+        "pytest"
+      ],
+      "url": "https://opportunities.example.invalid/cedar/23",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Time and materials",
+        "published_at": "2026-08-07",
+        "category": "data-engineering"
+      },
+      "external_id": "DEMO-0023"
+    },
+    {
+      "title": "Internal Reporting Automation",
+      "organisation": "Eastmere Borough Services",
+      "description": "Eastmere Borough Services is seeking a supplier to deliver internal reporting automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Manchester, UK",
+      "value": "\u00a328,000",
+      "deadline": "2026-09-12",
+      "category": "automation",
+      "contact_name": "James Whitlock",
+      "contact_email": "commercial@eastmere.example",
+      "requirements": "Experience with Pandas, SQLAlchemy, Airflow and production automation.",
+      "skills": [
+        "Pandas",
+        "SQLAlchemy",
+        "Airflow"
+      ],
+      "url": "https://opportunities.example.invalid/eastmere/24",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Framework call-off",
+        "published_at": "2026-08-19",
+        "category": "automation"
+      },
+      "external_id": "DEMO-0024"
+    },
+    {
+      "title": "Procurement Data Integration Support",
+      "organisation": "Thornfield Analytics Ltd",
+      "description": "Thornfield Analytics Ltd is seeking a supplier to deliver procurement data integration support across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Birmingham",
+      "value": "\u00a3105,000",
+      "deadline": "18/09/2026",
+      "category": "integration",
+      "contact_name": "Amelia Hart",
+      "contact_email": "procurement@thornfield.example",
+      "requirements": "Experience with httpx, BeautifulSoup, data extraction and production automation.",
+      "skills": [
+        "httpx",
+        "BeautifulSoup",
+        "data extraction"
+      ],
+      "url": "https://opportunities.example.invalid/thornfield/25",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Grant funded engagement",
+        "published_at": "2026-07-27",
+        "category": "integration"
+      },
+      "external_id": "DEMO-0025"
+    },
+    {
+      "title": "ETL Pipeline Modernisation",
+      "organisation": "Harbourline Logistics",
+      "description": "Harbourline Logistics is seeking a supplier to deliver etl pipeline modernisation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Leeds, England",
+      "value": "\u00a3170,000",
+      "deadline": "2026-09-29",
+      "category": "analytics",
+      "contact_name": "Daniel Okoye",
+      "contact_email": "contracts@harbourline.example",
+      "requirements": "Experience with Python, SQL, ETL and production automation.",
+      "skills": [
+        "Python",
+        "SQL",
+        "ETL"
+      ],
+      "url": "https://opportunities.example.invalid/harbourline/26",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Subcontract",
+        "published_at": "2026-08-15",
+        "category": "analytics"
+      },
+      "external_id": "DEMO-0026"
+    },
+    {
+      "title": "API Integration and Workflow Orchestration",
+      "organisation": "Ashford Civic Authority",
+      "description": "Ashford Civic Authority is seeking a supplier to deliver api integration and workflow orchestration across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Remote, United Kingdom",
+      "value": "\u00a3102,000",
+      "deadline": "28/09/2026",
+      "category": "procurement",
+      "contact_name": "Priya Raman",
+      "contact_email": "tenders@ashford.example",
+      "requirements": "Experience with Python, FastAPI, PostgreSQL and production automation.",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "url": "https://opportunities.example.invalid/ashford/27",
+      "metadata": {
+        "status": "open",
+        "contract_type": "RFQ",
+        "published_at": "2026-08-12",
+        "category": "procurement"
+      },
+      "external_id": "DEMO-0027"
+    },
+    {
+      "title": "Web Scraping Quality Assurance Framework",
+      "organisation": "Meridian Health Trust",
+      "description": "Meridian Health Trust is seeking a supplier to deliver web scraping quality assurance framework across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Hybrid - Glasgow",
+      "value": "\u00a3179,000",
+      "deadline": "2026-09-17",
+      "category": "infrastructure",
+      "contact_name": "James Whitlock",
+      "contact_email": "commercial@meridian.example",
+      "requirements": "Experience with Playwright, Python, pytest and production automation.",
+      "skills": [
+        "Playwright",
+        "Python",
+        "pytest"
+      ],
+      "url": "https://opportunities.example.invalid/meridian/28",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Contract",
+        "published_at": "2026-08-21",
+        "category": "infrastructure"
+      },
+      "external_id": "DEMO-0028"
+    },
+    {
+      "title": "Contract Opportunity Monitoring Platform",
+      "organisation": "Oakridge Procurement Office",
+      "description": "Oakridge Procurement Office is seeking a supplier to deliver contract opportunity monitoring platform across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Cardiff, Wales",
+      "value": "\u00a3163,000",
+      "deadline": "03/11/2026",
+      "category": "software-development",
+      "contact_name": "Amelia Hart",
+      "contact_email": "procurement@oakridge.example",
+      "requirements": "Experience with Pandas, SQLAlchemy, Airflow and production automation.",
+      "skills": [
+        "Pandas",
+        "SQLAlchemy",
+        "Airflow"
+      ],
+      "url": "https://opportunities.example.invalid/oakridge/29",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Fixed-price contract",
+        "published_at": "2026-08-15",
+        "category": "software-development"
+      },
+      "external_id": "DEMO-0029"
+    },
+    {
+      "title": "PostgreSQL Reporting Warehouse Build",
+      "organisation": "Silverstream Energy",
+      "description": "Silverstream Energy is seeking a supplier to deliver postgresql reporting warehouse build across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Edinburgh",
+      "value": "\u00a3144,000",
+      "deadline": "2026-09-14",
+      "category": "data-engineering",
+      "contact_name": "Daniel Okoye",
+      "contact_email": "contracts@silverstream.example",
+      "requirements": "Experience with httpx, BeautifulSoup, data extraction and production automation.",
+      "skills": [
+        "httpx",
+        "BeautifulSoup",
+        "data extraction"
+      ],
+      "url": "https://opportunities.example.invalid/silverstream/30",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Time and materials",
+        "published_at": "2026-08-15",
+        "category": "data-engineering"
+      },
+      "external_id": "DEMO-0030"
+    },
+    {
+      "title": "FastAPI Case Management Service",
+      "organisation": "Pendleton Research Institute",
+      "description": "Pendleton Research Institute is seeking a supplier to deliver fastapi case management service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Bristol",
+      "value": "\u00a3126,000",
+      "deadline": "01/10/2026",
+      "category": "automation",
+      "contact_name": "Priya Raman",
+      "contact_email": "tenders@pendleton.example",
+      "requirements": "Experience with Python, SQL, ETL and production automation.",
+      "skills": [
+        "Python",
+        "SQL",
+        "ETL"
+      ],
+      "url": "https://opportunities.example.invalid/pendleton/31",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Framework call-off",
+        "published_at": "2026-08-08",
+        "category": "automation"
+      },
+      "external_id": "DEMO-0031"
+    },
+    {
+      "title": "Scheduled Data Collection Engine",
+      "organisation": "Blackwood Municipal Council",
+      "description": "Blackwood Municipal Council is seeking a supplier to deliver scheduled data collection engine across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "UK-wide",
+      "value": "\u00a3171,000",
+      "deadline": "2026-10-24",
+      "category": "integration",
+      "contact_name": "James Whitlock",
+      "contact_email": "commercial@blackwood.example",
+      "requirements": "Experience with Python, FastAPI, PostgreSQL and production automation.",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "url": "https://opportunities.example.invalid/blackwood/32",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Grant funded engagement",
+        "published_at": "2026-08-11",
+        "category": "integration"
+      },
+      "external_id": "DEMO-0032"
+    },
+    {
+      "title": "Invoice Parsing and Validation Service",
+      "organisation": "Rivermead Education Consortium",
+      "description": "Rivermead Education Consortium is seeking a supplier to deliver invoice parsing and validation service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Newcastle upon Tyne",
+      "value": "\u00a3183,000",
+      "deadline": "24/09/2026",
+      "category": "analytics",
+      "contact_name": "Amelia Hart",
+      "contact_email": "procurement@rivermead.example",
+      "requirements": "Experience with Playwright, Python, pytest and production automation.",
+      "skills": [
+        "Playwright",
+        "Python",
+        "pytest"
+      ],
+      "url": "https://opportunities.example.invalid/rivermead/33",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Subcontract",
+        "published_at": "2026-08-22",
+        "category": "analytics"
+      },
+      "external_id": "DEMO-0033"
+    },
+    {
+      "title": "Grant Application Tracking Dashboard",
+      "organisation": "Foxwell Transport Authority",
+      "description": "Foxwell Transport Authority is seeking a supplier to deliver grant application tracking dashboard across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "London, United Kingdom",
+      "value": "GBP 66000 - 91000",
+      "deadline": "2026-08-18",
+      "category": "procurement",
+      "contact_name": "Daniel Okoye",
+      "contact_email": "contracts@foxwell.example",
+      "requirements": "Experience with Pandas, SQLAlchemy, Airflow and production automation.",
+      "skills": [
+        "Pandas",
+        "SQLAlchemy",
+        "Airflow"
+      ],
+      "url": "https://opportunities.example.invalid/foxwell/34",
+      "metadata": {
+        "status": "expired",
+        "contract_type": "RFQ",
+        "published_at": "2026-08-05",
+        "category": "procurement"
+      },
+      "external_id": "DEMO-0034"
+    },
+    {
+      "title": "Supplier Onboarding Automation \u2014 Phase 2",
+      "organisation": "Greystone Utilities",
+      "description": "Greystone Utilities is seeking a supplier to deliver supplier onboarding automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Manchester, UK",
+      "value": "\u00a3110,000",
+      "deadline": "17/09/2026",
+      "category": "infrastructure",
+      "contact_name": "Priya Raman",
+      "contact_email": "tenders@greystone.example",
+      "requirements": "Experience with httpx, BeautifulSoup, data extraction and production automation.",
+      "skills": [
+        "httpx",
+        "BeautifulSoup",
+        "data extraction"
+      ],
+      "url": "https://opportunities.example.invalid/greystone/35",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Contract",
+        "published_at": "2026-08-21",
+        "category": "infrastructure"
+      },
+      "external_id": "DEMO-0035"
+    },
+    {
+      "title": "Tender Portal Data Consolidation",
+      "organisation": "Haverford Data Cooperative",
+      "description": "Haverford Data Cooperative is seeking a supplier to deliver tender portal data consolidation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Birmingham",
+      "value": "\u00a362,000",
+      "deadline": "2026-10-25",
+      "category": "software-development",
+      "contact_name": "James Whitlock",
+      "contact_email": "commercial@haverford.example",
+      "requirements": "Experience with Python, SQL, ETL and production automation.",
+      "skills": [
+        "Python",
+        "SQL",
+        "ETL"
+      ],
+      "url": "https://opportunities.example.invalid/haverford/36",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Fixed-price contract",
+        "published_at": "2026-08-05",
+        "category": "software-development"
+      },
+      "external_id": "DEMO-0036"
+    },
+    {
+      "title": "Python Test Automation for ETL Jobs",
+      "organisation": "Elmhurst Social Care Trust",
+      "description": "Elmhurst Social Care Trust is seeking a supplier to deliver python test automation for etl jobs across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Leeds, England",
+      "value": "\u00a362,000",
+      "deadline": "05/11/2026",
+      "category": "data-engineering",
+      "contact_name": "Amelia Hart",
+      "contact_email": "procurement@elmhurst.example",
+      "requirements": "Experience with Python, FastAPI, PostgreSQL and production automation.",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "url": "https://opportunities.example.invalid/elmhurst/37",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Time and materials",
+        "published_at": "2026-07-25",
+        "category": "data-engineering"
+      },
+      "external_id": "DEMO-0037"
+    },
+    {
+      "title": "Records Digitisation Workflow",
+      "organisation": "Kingswell Water Partnership",
+      "description": "Kingswell Water Partnership is seeking a supplier to deliver records digitisation workflow across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Remote, United Kingdom",
+      "value": "\u00a3109,000",
+      "deadline": "2026-11-04",
+      "category": "automation",
+      "contact_name": "Daniel Okoye",
+      "contact_email": "contracts@kingswell.example",
+      "requirements": "Experience with Playwright, Python, pytest and production automation.",
+      "skills": [
+        "Playwright",
+        "Python",
+        "pytest"
+      ],
+      "url": "https://opportunities.example.invalid/kingswell/38",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Framework call-off",
+        "published_at": "2026-07-27",
+        "category": "automation"
+      },
+      "external_id": "DEMO-0038"
+    },
+    {
+      "title": "Business Process Automation Discovery",
+      "organisation": "Bramley Heritage Foundation",
+      "description": "Bramley Heritage Foundation is seeking a supplier to deliver business process automation discovery across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Hybrid - Glasgow",
+      "value": "\u00a344,000",
+      "deadline": "16/09/2026",
+      "category": "integration",
+      "contact_name": "Priya Raman",
+      "contact_email": "tenders@bramley.example",
+      "requirements": "Experience with Pandas, SQLAlchemy, Airflow and production automation.",
+      "skills": [
+        "Pandas",
+        "SQLAlchemy",
+        "Airflow"
+      ],
+      "url": "https://opportunities.example.invalid/bramley/39",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Grant funded engagement",
+        "published_at": "2026-08-17",
+        "category": "integration"
+      },
+      "external_id": "DEMO-0039"
+    },
+    {
+      "title": "Secure File Transfer and Ingestion Service",
+      "organisation": "Southmere Digital Authority",
+      "description": "Southmere Digital Authority is seeking a supplier to deliver secure file transfer and ingestion service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.",
+      "location": "Cardiff, Wales",
+      "value": "\u00a371,000",
+      "deadline": "2026-10-24",
+      "category": "analytics",
+      "contact_name": "James Whitlock",
+      "contact_email": "commercial@southmere.example",
+      "requirements": "Experience with httpx, BeautifulSoup, data extraction and production automation.",
+      "skills": [
+        "httpx",
+        "BeautifulSoup",
+        "data extraction"
+      ],
+      "url": "https://opportunities.example.invalid/southmere/40",
+      "metadata": {
+        "status": "open",
+        "contract_type": "Subcontract",
+        "published_at": "2026-07-22",
+        "category": "analytics"
+      },
+      "external_id": "DEMO-0040"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>{% block title %}Opportunity Engine{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          <strong>Opportunity Engine</strong>
+          <small>Intelligence automation</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        {% set path = request.url.path %}
+        <a href="/" class="nav-link{% if path == '/' %} is-active{% endif %}">Dashboard</a>
+        <a href="/runs" class="nav-link{% if path == '/runs' %} is-active{% endif %}">Runs</a>
+        <a href="/metrics/summary" class="nav-link">Metrics</a>
+        <a href="/docs" class="nav-link nav-link--external">API docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>Deterministic Python automation pipeline · no LLM required</p>
+      <p class="footer-meta">Collect · validate · score · report</p>
+    </div>
+  </footer>
+</body>
+</html>

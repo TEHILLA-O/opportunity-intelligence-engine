@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: uv sync --group dev
+      - name: Ruff lint
+        run: uv run ruff check app tests scripts
+      - name: Ruff format
+        run: uv run ruff format --check app tests scripts
+      - name: Typecheck
+        run: uv run mypy app
+      - name: Import smoke test
+        run: uv run python -c "from app.main import create_app; create_app()"
+      - name: Tests and coverage
+        run: uv run pytest --cov=app --cov-report=term-missing --cov-report=xml
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t opportunity-engine:ci .

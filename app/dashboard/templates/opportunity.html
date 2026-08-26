@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}{{ item.title }} · Opportunity Engine{% endblock %}
+{% block content %}
+<p class="eyebrow"><a href="/">← Dashboard</a></p>
+<h1>{{ item.title }}</h1>
+<p class="lede">{{ item.organisation or "Unknown organisation" }} · {{ item.location or "Location unknown" }}</p>
+
+<section class="kpis">
+  <article><span>Score</span><strong>{{ item.score }}</strong></article>
+  <article><span>Rating</span><strong>{{ item.score_rating }}</strong></article>
+  <article><span>Deadline</span><strong>{{ item.deadline_status }}</strong></article>
+  <article><span>Value</span><strong>{{ item.currency or "" }} {{ item.estimated_value or "—" }}</strong></article>
+</section>
+
+<section class="panel">
+  <h2>Summary</h2>
+  <p>{{ item.summary or item.description or "No description." }}</p>
+  {% if item.source_url %}<p><a href="{{ item.source_url }}">Source record</a></p>{% endif %}
+</section>
+
+<section class="panel">
+  <h2>Why this score</h2>
+  <ul>
+    {% for reason in item.score_reasons %}
+      <li>{{ reason }}</li>
+    {% else %}
+      <li>No scoring reasons recorded.</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="panel">
+  <h2>Provenance</h2>
+  <table>
+    <tr><th>External ID</th><td>{{ item.external_id or "—" }}</td></tr>
+    <tr><th>Raw record</th><td>{{ item.raw_opportunity_id or "—" }}</td></tr>
+    <tr><th>Content hash</th><td><code>{{ item.content_hash }}</code></td></tr>
+    <tr><th>First seen</th><td>{{ item.first_seen_at }}</td></tr>
+    <tr><th>Last seen</th><td>{{ item.last_seen_at }}</td></tr>
+    <tr><th>Contact</th><td>{{ item.contact_name or "—" }} {{ item.contact_email or "" }}</td></tr>
+  </table>
+</section>
+{% endblock %}

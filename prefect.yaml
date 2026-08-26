@@ -1,0 +1,12 @@
+# Deploy with: prefect deploy
+name: opportunity-engine
+prefect-version: 3.0.0
+
+deployments:
+  - name: opportunity-pipeline-hourly
+    entrypoint: app/workflows/opportunity_pipeline.py:opportunity_pipeline
+    work_pool:
+      name: default
+    schedules:
+      - cron: "0 * * * *"
+        timezone: "Europe/London"

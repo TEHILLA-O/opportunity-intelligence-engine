@@ -1,0 +1,57 @@
+:root {
+  --bg: #f4f1ea;
+  --ink: #1c2430;
+  --muted: #5c6773;
+  --panel: #fffdf8;
+  --line: #d9d2c5;
+  --accent: #1b4d4a;
+  --accent-2: #c45c26;
+  --ok: #2f6f4e;
+  --warn: #a15c12;
+  --bad: #9b2c2c;
+  font-family: "Segoe UI", "Calibri", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.9rem 1.5rem; background: #13242b; color: #f4f1ea;
+}
+.topbar a { color: #f4f1ea; margin-left: 1rem; }
+.brand { font-weight: 700; letter-spacing: 0.02em; margin-left: 0 !important; }
+.container { max-width: 1120px; margin: 0 auto; padding: 1.5rem; }
+.hero h1 { margin: 0.2rem 0; font-size: 2rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; color: var(--muted); }
+.lede { color: var(--muted); }
+.kpis {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem; margin: 1.2rem 0;
+}
+.kpis article, .panel {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  padding: 1rem;
+}
+.kpis span { display: block; color: var(--muted); font-size: 0.8rem; }
+.kpis strong { font-size: 1.5rem; }
+.grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.panel { margin-bottom: 1rem; }
+.panel h2 { margin-top: 0; font-size: 1.05rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 0.45rem 0.3rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.plain { list-style: none; padding: 0; margin: 0; }
+.plain li { padding: 0.4rem 0; border-bottom: 1px solid var(--line); }
+.plain small { display: block; color: var(--muted); }
+.pill {
+  display: inline-block; padding: 0.1rem 0.45rem; border-radius: 999px;
+  font-size: 0.78rem; background: #e7eee8;
+}
+.score-VERY_HIGH, .health-healthy { background: #d8ecdf; color: var(--ok); }
+.score-HIGH { background: #e4f0d8; }
+.score-MEDIUM { background: #f4ead0; color: var(--warn); }
+.score-LOW, .score-VERY_LOW, .health-unhealthy { background: #f6dede; color: var(--bad); }
+.health-degraded { background: #f4ead0; color: var(--warn); }
+.footer { text-align: center; color: var(--muted); padding: 1.5rem; font-size: 0.85rem; }
+code { font-size: 0.82rem; }
+@media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }

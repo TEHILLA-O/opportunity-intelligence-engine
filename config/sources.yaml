@@ -1,0 +1,33 @@
+sources:
+  demo:
+    enabled: true
+    type: mock
+    description: Bundled synthetic procurement and freelance opportunities.
+
+  sample_json:
+    enabled: true
+    type: json
+    path: data/demo/sample_feed.json
+    description: Local JSON feed used to demonstrate the JSON connector.
+
+  sample_rss:
+    enabled: true
+    type: rss
+    path: data/demo/sample_feed.rss
+    description: Local RSS feed used to demonstrate the RSS connector.
+
+  sample_html:
+    enabled: true
+    type: html
+    path: data/demo/sample_listing.html
+    description: Local HTML listing used to demonstrate public HTML extraction.
+
+  remote_example:
+    enabled: false
+    type: json
+    url: https://example.invalid/opportunities.json
+    delay_seconds: 1.0
+    timeout_seconds: 20
+    max_retries: 3
+    respect_robots: true
+    description: Disabled remote example. Enable only for public sources that permit automation.

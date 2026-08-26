@@ -1,0 +1,70 @@
+scoring:
+  keywords:
+    python: 15
+    automation: 15
+    etl: 15
+    "data extraction": 12
+    "data-extraction": 12
+    scraping: 10
+    api: 10
+    fastapi: 8
+    sqlalchemy: 8
+    postgresql: 8
+    workflow: 8
+    normalisation: 8
+    procurement: 6
+    reporting: 6
+    integration: 6
+    playwright: 6
+    pandas: 5
+
+  excluded_keywords:
+    wordpress: -20
+    "graphic design": -25
+    "graphic-design": -25
+    "logo design": -20
+    shopify: -15
+
+  preferred_contract_types:
+    fixed_price: 10
+    contract: 8
+    framework: 6
+
+  preferred_categories:
+    software-development: 10
+    data-engineering: 12
+    automation: 12
+    integration: 8
+    analytics: 6
+
+  preferred_locations:
+    remote: 8
+    london: 6
+    manchester: 5
+    birmingham: 4
+    "united kingdom": 4
+    uk: 4
+
+  preferred_procurement_types:
+    tender: 6
+    contract: 6
+    freelance: 4
+
+  required_skills:
+    python: 10
+    sql: 6
+    etl: 8
+    fastapi: 5
+
+  remote_bonus: 8
+  hybrid_bonus: 4
+  minimum_value: 5000
+  maximum_value: 500000
+  value_in_range_bonus: 10
+  deadline_min_days: 3
+  deadline_max_days: 90
+  deadline_in_range_bonus: 5
+  expired_penalty: -30
+  missing_deadline_penalty: -5
+  minimum_score_for_alert: 75
+  closing_soon_days: 3

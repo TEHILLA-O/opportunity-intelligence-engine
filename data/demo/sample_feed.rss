@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss version='2.0'><channel>
+<title>Sample Opportunity Feed</title>
+    <item>
+      <title>Python Data Extraction Automation</title>
+      <link>https://opportunities.example.invalid/northbridge/41</link>
+      <guid>DEMO-0041</guid>
+      <description>Northbridge Digital Services is seeking a supplier to deliver python data extraction automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Northbridge Digital Services</author>
+    </item>
+    <item>
+      <title>Supplier Data Normalisation Service</title>
+      <link>https://opportunities.example.invalid/westborough/42</link>
+      <guid>DEMO-0042</guid>
+      <description>Westborough Housing Partnership is seeking a supplier to deliver supplier data normalisation service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Westborough Housing Partnership</author>
+    </item>
+    <item>
+      <title>Document Processing Workflow Development</title>
+      <link>https://opportunities.example.invalid/cedar/43</link>
+      <guid>DEMO-0043</guid>
+      <description>Cedar Finance Group is seeking a supplier to deliver document processing workflow development across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Cedar Finance Group</author>
+    </item>
+    <item>
+      <title>Internal Reporting Automation</title>
+      <link>https://opportunities.example.invalid/eastmere/44</link>
+      <guid>DEMO-0044</guid>
+      <description>Eastmere Borough Services is seeking a supplier to deliver internal reporting automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Eastmere Borough Services</author>
+    </item>
+    <item>
+      <title>Procurement Data Integration Support</title>
+      <link>https://opportunities.example.invalid/thornfield/45</link>
+      <guid>DEMO-0045</guid>
+      <description>Thornfield Analytics Ltd is seeking a supplier to deliver procurement data integration support across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Thornfield Analytics Ltd</author>
+    </item>
+    <item>
+      <title>ETL Pipeline Modernisation</title>
+      <link>https://opportunities.example.invalid/harbourline/46</link>
+      <guid>DEMO-0046</guid>
+      <description>Harbourline Logistics is seeking a supplier to deliver etl pipeline modernisation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Harbourline Logistics</author>
+    </item>
+    <item>
+      <title>API Integration and Workflow Orchestration</title>
+      <link>https://opportunities.example.invalid/ashford/47</link>
+      <guid>DEMO-0047</guid>
+      <description>Ashford Civic Authority is seeking a supplier to deliver api integration and workflow orchestration across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Ashford Civic Authority</author>
+    </item>
+    <item>
+      <title>Web Scraping Quality Assurance Framework</title>
+      <link>https://opportunities.example.invalid/meridian/48</link>
+      <guid>DEMO-0048</guid>
+      <description>Meridian Health Trust is seeking a supplier to deliver web scraping quality assurance framework across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Meridian Health Trust</author>
+    </item>
+    <item>
+      <title>Contract Opportunity Monitoring Platform</title>
+      <link>https://opportunities.example.invalid/oakridge/49</link>
+      <guid>DEMO-0049</guid>
+      <description>Oakridge Procurement Office is seeking a supplier to deliver contract opportunity monitoring platform across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Oakridge Procurement Office</author>
+    </item>
+    <item>
+      <title>PostgreSQL Reporting Warehouse Build</title>
+      <link>https://opportunities.example.invalid/silverstream/50</link>
+      <guid>DEMO-0050</guid>
+      <description>Silverstream Energy is seeking a supplier to deliver postgresql reporting warehouse build across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Silverstream Energy</author>
+    </item>
+    <item>
+      <title>FastAPI Case Management Service</title>
+      <link>https://opportunities.example.invalid/pendleton/51</link>
+      <guid>DEMO-0051</guid>
+      <description>Pendleton Research Institute is seeking a supplier to deliver fastapi case management service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Pendleton Research Institute</author>
+    </item>
+    <item>
+      <title>Scheduled Data Collection Engine — Phase 1</title>
+      <link>https://opportunities.example.invalid/blackwood/52</link>
+      <guid>DEMO-0052</guid>
+      <description>Blackwood Municipal Council is seeking a supplier to deliver scheduled data collection engine across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Blackwood Municipal Council</author>
+    </item>
+    <item>
+      <title>Invoice Parsing and Validation Service</title>
+      <link>https://opportunities.example.invalid/rivermead/53</link>
+      <guid>DEMO-0053</guid>
+      <description>Rivermead Education Consortium is seeking a supplier to deliver invoice parsing and validation service across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Rivermead Education Consortium</author>
+    </item>
+    <item>
+      <title>Grant Application Tracking Dashboard</title>
+      <link>https://opportunities.example.invalid/foxwell/54</link>
+      <guid>DEMO-0054</guid>
+      <description>Foxwell Transport Authority is seeking a supplier to deliver grant application tracking dashboard across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Emphasis is placed on idempotent re-runs and duplicate detection. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Foxwell Transport Authority</author>
+    </item>
+    <item>
+      <title>Supplier Onboarding Automation</title>
+      <link>https://opportunities.example.invalid/greystone/55</link>
+      <guid>DEMO-0055</guid>
+      <description>Greystone Utilities is seeking a supplier to deliver supplier onboarding automation across operational teams. The engagement covers collection from multiple source systems, structured extraction, validation, and repeatable reporting. Work must be delivered against a documented run history and source health checks. Bidders should demonstrate production Python automation, responsible data collection, and an auditable pipeline rather than one-off scripts.</description>
+      <author>Greystone Utilities</author>
+    </item>
+</channel></rss>
