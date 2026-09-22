@@ -2,6 +2,8 @@
 
 Collect, normalise, score and report commercial opportunities from multiple sources — without an LLM.
 
+See [FAILURES.md](./FAILURES.md) for what can go wrong, what broke, how it was fixed, and results.
+
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-1B4D4A)](https://www.python.org/)
 [![Tests](https://img.shields.io/badge/tests-pytest-2F6F4E)](./tests)
 [![Lint](https://img.shields.io/badge/lint-ruff-1B3A4B)](./pyproject.toml)
